@@ -635,3 +635,8 @@ news-button .active button::after {
 .remove-player-btn:hover {
   background: #ff6666;
 }
+
+/* Hide elements that are not relevant for the OpenFrontIO client (e.g. Ads) */
+.no-crazygames {
+  display: none !important;
+}
