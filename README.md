@@ -1,230 +1,204 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="resources/images/OpenFrontLogoDark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="resources/images/OpenFrontLogo.svg">
-    <img src="resources/images/OpenFrontLogo.svg" alt="OpenFrontIO Logo" width="300">
-  </picture>
-</p>
+# LocalFront
 
-[OpenFront.io](https://openfront.io/) is an online real-time strategy game focused on territorial control and alliance building. Players compete to expand their territory, build structures, and form strategic alliances in various maps based on real-world geography.
+LocalFront is a locally-hosted, offline-ready variant of OpenFront—a real-time strategy game focused on territorial control and alliance building. Play without ads and enjoy a fully personalized gaming experience on your own machine.
 
-This is a fork/rewrite of WarFront.io. Credit to https://github.com/WarFrontIO.
+## 🎮 What is LocalFront?
 
-![CI](https://github.com/openfrontio/OpenFrontIO/actions/workflows/ci.yml/badge.svg)
-[![Crowdin](https://badges.crowdin.net/openfront-mls/localized.svg)](https://crowdin.com/project/openfront-mls)
-[![CLA assistant](https://cla-assistant.io/readme/badge/openfrontio/OpenFrontIO)](https://cla-assistant.io/openfrontio/OpenFrontIO)
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
-[![Assets: CC BY-SA 4.0](https://img.shields.io/badge/Assets-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+LocalFront is a complete local implementation of the OpenFront strategy game. Players compete to expand their territory, build structures, and form strategic alliances across various maps based on real-world geography. Unlike the online version, LocalFront runs entirely on your local machine without internet requirements or advertisements.
 
-## License
+**Key Differences from OpenFront:**
+- ✅ **No Ads** - Play ad-free without interruptions
+- ✅ **Completely Local** - No internet connection required after initial setup
+- ✅ **Personalized Colors** - Customized UI theme for enhanced visual appeal
+- ✅ **Self-Hosted** - Full control over your gaming environment
 
-OpenFront source code is licensed under the **GNU Affero General Public License v3.0**
+## 🌟 Core Features
 
-Current copyright notices appear in:
-
-- Footer: "© OpenFront and Contributors"
-- Loading screen: "© OpenFront and Contributors"
-
-Modified versions must preserve these notices in reasonably visible locations.
-
-See the [LICENSE](LICENSE) for complete requirements.
-
-For asset licensing, see [LICENSE-ASSETS](LICENSE-ASSETS).  
-For license history, see [LICENSING.md](LICENSING.md).
-
-## 🌟 Features
-
-- **Real-time Strategy Gameplay**: Expand your territory and engage in strategic battles
-- **Alliance System**: Form alliances with other players for mutual defense
-- **Multiple Maps**: Play across various geographical regions including Europe, Asia, Africa, and more
-- **Resource Management**: Balance your expansion with defensive capabilities
-- **Cross-platform**: Play in any modern web browser
+- **Real-time Strategy Gameplay** - Expand your territory and engage in strategic battles
+- **Alliance System** - Form alliances with other players for mutual defense and cooperation
+- **Multiple Maps** - Play across various geographical regions including Europe, Asia, Africa, and more
+- **Resource Management** - Balance your expansion with defensive capabilities
+- **Cross-platform** - Play in any modern web browser on Windows, macOS, or Linux
 
 ## 📋 Prerequisites
 
+- [Node.js](https://nodejs.org/) (v18 or higher)
 - [npm](https://www.npmjs.com/) (v10.9.2 or higher)
-- A modern web browser (Chrome, Firefox, Edge, etc.)
+- A modern web browser (Chrome, Firefox, Edge, Safari, etc.)
+- 2GB minimum free disk space
 
-## 🚀 Installation
+## 🚀 Quick Start
 
-1. **Clone the repository**
+### 1. Clone the Repository
+```bash
+git clone https://github.com/yourusername/LocalFront.git
+cd LocalFront
+```
 
-   ```bash
-   git clone https://github.com/openfrontio/OpenFrontIO.git
-   cd OpenFrontIO
-   ```
+### 2. Install Dependencies
+```bash
+npm ci --ignore-scripts
+```
 
-2. **Install dependencies**
-
-   ```bash
-   npm run inst
-   ```
-
-   Do NOT use `npm install` nor `npm i` but instead use our `npm run inst`. It runs the safer `npm ci --ignore-scripts` to install dependencies exactly according to the versions in `package-lock.json` and doesn't run scripts. This can prevent being hit by a supply chain attack.
-
-## 🎮 Running the Game
-
-### Development Mode
-
-Run both the client and server in development mode with live reloading:
-
+### 3. Start the Development Server
 ```bash
 npm run dev
 ```
 
-This will:
+The game will be available at `http://localhost:5173`
 
-- Start the webpack dev server for the client
-- Launch the game server with development settings
-- Open the game in your default browser (to disable this behavior, set `SKIP_BROWSER_OPEN=true` in your environment)
+### 4. Play Locally
+Open your browser and start playing! The game runs entirely on your local machine.
 
-### Client Only
+## 🏗️ Development
 
-To run just the client with hot reloading:
-
-```bash
-npm run start:client
-```
-
-### Server Only
-
-To run just the server with development settings:
+### Available Commands
 
 ```bash
-npm run start:server-dev
+# Development with auto-reload
+npm run dev
+
+# Build for production
+npm run build-prod
+
+# Build for development
+npm run build-dev
+
+# Run tests
+npm test
+
+# Run with coverage
+npm run test:coverage
+
+# Format code
+npm run format
+
+# Lint code
+npm lint
+
+# Fix linting issues
+npm run lint:fix
 ```
 
-### Connecting to staging or production backends
+### Project Structure
 
-Sometimes it's useful to connect to production servers when replaying a game, testing user profiles, purchases, or login flow.
+```
+LocalFront/
+├── src/
+│   ├── client/       # Client-side game UI and logic
+│   ├── server/       # Server-side game logic
+│   └── core/         # Shared game mechanics
+├── resources/        # Game assets (maps, sprites, sounds, translations)
+├── tests/            # Test suites
+├── docs/             # Documentation
+└── map-generator/    # Tool for generating game maps
+```
 
-> To replay a production game, make sure you're on the same commit that the game you want to replay was executed on, you can find the `gitCommit` value via `https://api.openfront.io/game/[gameId]`.
-> Unfinished games cannot be replayed on localhost.
+## 🎨 Customization
 
-To connect to staging api servers:
+LocalFront comes with personalized colors and styling. To further customize:
 
+1. **Colors** - Modify button and UI colors in `src/client/GameModeSelector.ts`
+2. **Assets** - Replace game images and sprites in `resources/`
+3. **Translations** - Update game text in `resources/lang/`
+4. **Maps** - Use the map generator tool to create custom maps
+
+### Removing Ads
+Ad-related code and references have been removed throughout the codebase. The game runs completely ad-free.
+
+## 📦 Build & Deployment
+
+### Local Production Build
 ```bash
-npm run dev:staging
+npm run build-prod
+npm run start:server
 ```
 
-To connect to production api servers:
+Your game will be available at `http://localhost:3000`
 
+### Docker Deployment
 ```bash
-npm run dev:prod
+docker build -t localfront .
+docker run -p 3000:3000 localfront
 ```
 
-## 🛠️ Development Tools
+## 🧪 Testing
 
-- **Format code**:
+Run the complete test suite:
+```bash
+npm test
+```
 
-  ```bash
-  npm run format
-  ```
+Run tests with coverage:
+```bash
+npm run test:coverage
+```
 
-- **Lint code**:
+## 📝 License
 
-  ```bash
-  npm run lint
-  ```
+LocalFront is based on OpenFront, which is licensed under the **GNU Affero General Public License v3.0**.
 
-- **Lint and fix code**:
+Modified versions must preserve copyright notices in reasonably visible locations:
+- Footer: "© OpenFront and Contributors"
+- Loading screen: "© OpenFront and Contributors"
 
-  ```bash
-  npm run lint:fix
-  ```
-
-- **Testing**
-  ```bash
-  npm test
-  ```
-
-## 🏗️ Project Structure
-
-- `/src/client` - Frontend game client
-- `/src/core` - Shared game logic
-- `/src/server` - Backend game server
-- `/resources` - Static assets (images, maps, etc.)
+See the [LICENSE](LICENSE) for complete requirements.
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please:
 
-1. Request to join the development [Discord](https://discord.gg/K9zernJB5z).
-1. Fork the repository
-1. Create your feature branch (`git checkout -b amazing-feature`)
-1. Commit your changes (`git commit -m 'Add some amazing feature'`)
-1. Push to the branch (`git push origin amazing-feature`)
-1. Open a Pull Request
+1. Follow the existing code style and conventions
+2. Run `npm run format` and `npm run lint:fix` before committing
+3. Write tests for new features
+4. Update documentation as needed
 
-## 🌐 Translation
+## 📚 Documentation
 
-Translators are welcome! Please feel free to help translate into your language.
-How to help?
+- [Architecture](docs/Architecture.md) - System design and components
+- [API Documentation](docs/API.md) - Server API reference
+- [Authentication](docs/Auth.md) - Authentication system details
 
-1. Join the translation [Discord](https://discord.gg/3zZzacjWFr)
-2. Go to the project's Crowdin translation page: [https://crowdin.com/project/openfront-mls](https://crowdin.com/project/openfront-mls)
-3. Login if you already have an account / Sign up if you don't have one
-4. Join the project
-5. Select the language you want to translate in. If your language isn't on the list, click the "Request New Language" button and enter the language you want added there.
-6. Translate the strings
+## 🐛 Troubleshooting
 
-Feel free to ask questions in the translation Discord server!
+### Port Already in Use
+If port 5173 (dev) or 3000 (production) is already in use, you can specify a different port:
+```bash
+npm run dev -- --port 5174
+```
 
-### Project Governance
+### Node Modules Issues
+Clear node modules and reinstall:
+```bash
+rm -r node_modules package-lock.json
+npm ci
+```
 
-- The project maintainer ([evan](https://github.com/evanpelle)) has final authority on all code changes and design decisions
-- All pull requests require maintainer approval before merging
-- The maintainer reserves the right to reject contributions that don't align with the project's vision or quality standards
+### Build Failures
+Ensure you're using Node.js v18 or higher:
+```bash
+node --version
+```
 
-### Contribution Path for New Contributors
+## 🎯 Roadmap
 
-To ensure code quality and project stability, we use a progressive contribution system:
+- [ ] Enhanced offline support with service workers
+- [ ] Local save/replay system
+- [ ] Custom map creation UI
+- [ ] Additional language translations
+- [ ] Performance optimizations
 
-1. **New Contributors**: Limited to UI improvements and small bug fixes only
+## 📞 Support
 
-   - This helps you become familiar with the codebase
-   - UI changes are easier to review and less likely to break core functionality
-   - Small, focused PRs have a higher chance of being accepted
+For issues and questions:
+- Check existing [documentation](docs/)
+- Review the [original OpenFront repository](https://github.com/openfrontio/OpenFrontIO)
+- Open an issue in your local fork
 
-2. **Established Contributors**: After several successful PRs and demonstrating understanding of the codebase, you may work on more complex features
+## 🙏 Acknowledgments
 
-3. **Core Contributors**: Only those with extensive experience with the project may modify critical game systems
+LocalFront is built upon [OpenFront](https://github.com/openfrontio/OpenFrontIO), which itself is a fork/rewrite of WarFront.io. Thanks to all contributors to these projects.
 
-### How to Contribute Successfully
+---
 
-1. **Before Starting Work**:
-
-   - Open an issue describing what you want to contribute
-   - Wait for maintainer feedback before investing significant time
-   - Small improvements can proceed directly to PR stage
-
-2. **Code Quality Requirements**:
-
-   - All code must be well-commented and follow existing style patterns
-   - New features should not break existing functionality
-   - Code should be thoroughly tested before submission
-   - All code changes in src/core _MUST_ be tested.
-
-3. **Pull Request Process**:
-
-   - Keep PRs focused on a single feature or bug fix
-   - Include screenshots for UI changes
-   - Describe what testing you've performed
-   - Be responsive to feedback and requested changes
-
-4. **Testing Requirements**:
-   - Verify your changes work as expected
-   - Test on multiple systems/browsers if applicable
-   - Document your testing process in the PR
-
-### Communication
-
-- Be respectful and constructive in all project interactions
-- Questions are welcome, but please search existing issues first
-- For major changes, discuss in an issue before starting work
-
-### Final Notes
-
-Remember that maintaining this project requires significant effort. The maintainer appreciates your contributions but must prioritize long-term project health and stability. Not all contributions will be accepted, and that's okay.
-
-Thank you for helping make OpenFront better!
+**Enjoy your completely local, ad-free strategy gaming experience with LocalFront!** 🎮
