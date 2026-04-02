@@ -27,7 +27,7 @@ import {
   translateText,
 } from "./Utils";
 
-const CARD_BG = "bg-sky-950";
+const CARD_BG = "bg-purple-950";
 
 @customElement("game-mode-selector")
 export class GameModeSelector extends LitElement {
@@ -119,7 +119,7 @@ export class GameModeSelector extends LitElement {
           ${this.renderSmallActionCard(
             translateText("main.solo"),
             this.openSinglePlayerModal,
-            "bg-sky-600 hover:bg-sky-500 active:bg-sky-700",
+            "bg-purple-600 hover:bg-purple-500 active:bg-purple-700",
           )}
         </div>
         <!-- Create/ranked/join: mobile only, below solo -->
@@ -188,7 +188,7 @@ export class GameModeSelector extends LitElement {
           ${this.renderSmallActionCard(
             translateText("main.solo"),
             this.openSinglePlayerModal,
-            "bg-sky-600 hover:bg-sky-500 active:bg-sky-700",
+            "bg-purple-600 hover:bg-purple-500 active:bg-purple-700",
           )}
         </div>
         <!-- Bottom row: create + ranked + join (desktop only) -->
@@ -295,7 +295,7 @@ export class GameModeSelector extends LitElement {
     return html`
       <button
         @click=${() => this.validateAndJoin(lobby)}
-        class="group relative w-full h-44 sm:h-full text-white uppercase rounded-2xl transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] bg-sky-950"
+        class="group relative w-full h-44 sm:h-full text-white uppercase rounded-2xl transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] bg-purple-950"
       >
         <!-- Image clipped separately so overflow-hidden doesn't block absolute children -->
         <div
@@ -321,7 +321,7 @@ export class GameModeSelector extends LitElement {
                 ${modifierLabels.map(
                   (label) =>
                     html`<span
-                      class="px-2 py-1 rounded text-xs font-bold uppercase tracking-widest bg-sky-600 text-white shadow-[0_0_6px_rgba(14,165,233,0.35)]"
+                      class="px-2 py-1 rounded text-xs font-bold uppercase tracking-widest bg-purple-600 text-white shadow-[0_0_6px_rgba(14,165,233,0.35)]"
                       >${label}</span
                     >`,
                 )}
@@ -331,7 +331,7 @@ export class GameModeSelector extends LitElement {
             <span
               class="text-xs font-bold tracking-widest ${timeDisplayUppercase
                 ? "uppercase"
-                : "normal-case"} bg-sky-600 text-white px-2 py-1 rounded"
+                : "normal-case"} bg-purple-600 text-white px-2 py-1 rounded"
               >${timeDisplay}</span
             >
           </div>
